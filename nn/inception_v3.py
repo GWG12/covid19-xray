@@ -2,14 +2,17 @@ import torch
 from PIL import Image
 from nn.helpers import get_default_device, to_device
 import torchvision.transforms as tt
+import os
 
 
 model_ft = torch.load(r'D:\\Documents\\Python\\Projects\\fsdl\\app\\nn\\covid19.pth',map_location=torch.device('cpu'))
+
 
 tfms = tt.Compose([
     tt.Resize((300,300)),
     tt.ToTensor(),
 ])
+
 
 def predict_image(img_path, model):
     img = Image.open(img_path)
