@@ -20,7 +20,8 @@ class ImageSimilarity:
         self.normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                               std=[0.229, 0.224, 0.225])
         self.to_tensor = transforms.ToTensor()
-        self.vec_folder = r'D:\\Documents\\Python\\Projects\\fsdl\\app\\image_similarity\\Vectors'
+        #self.vec_folder = r'D:\\Documents\\Python\\Projects\\fsdl\\app\\image_similarity\\Vectors'
+        self.vec_folder = r'/app/image_similarity/Vectors'
         # Load the pretrained model
         self.model = models.resnet18(pretrained=True)
         # Use the model object to select the desired layer
@@ -83,6 +84,8 @@ class ImageSimilarity:
             vector_comp = cos(sample_img, vector).item()
             acc += vector_comp
         similarity_mean = acc/len(base_vectors)
+        print(f'similarity mean: {similarity_mean}')
+        print(f'similarity treshold: {self.treshold}')
         # If more than treshold, it's similar
         if similarity_mean >= self.treshold:
             return True

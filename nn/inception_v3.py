@@ -5,7 +5,8 @@ import torchvision.transforms as tt
 import os
 
 
-model_ft = torch.load(r'D:\\Documents\\Python\\Projects\\fsdl\\app\\nn\\covid19.pth',map_location=torch.device('cpu'))
+#model_ft = torch.load(r'D:\\Documents\\Python\\Projects\\fsdl\\app\\nn\\covid19.pth',map_location=torch.device('cpu'))
+model_ft = torch.load(r'/app/nn/covid19.pth',map_location=torch.device('cpu'))
 
 
 tfms = tt.Compose([
